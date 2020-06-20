@@ -1,0 +1,165 @@
+
+#include "resource.h"
+
+MAINMENU MENU
+BEGIN
+    POPUP "开始(&B)"
+    BEGIN
+        MENUITEM "开始游戏(&S)\tCtrl+S",            IDM_START
+        MENUITEM "重新开始(&R)\tCtrl+R",            IDM_RESTART, GRAYED
+        MENUITEM "暂停游戏(&P)\tCtrl+P",            IDM_PAUSE, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&E)\tCtrl+E",              IDM_EXIT
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "本地帮助(&L)\tCtrl+L",            IDM_LOCALHELP
+        MENUITEM "网络帮助(&O)\tCtrl+O",            IDM_ONLINEHELP
+    END
+    MENUITEM "设置(&S)\t",                    IDM_SETTINGS
+    POPUP "关于(&G)"
+    BEGIN
+        POPUP "更新内容(&U)"
+        BEGIN
+            MENUITEM "v1.0更新内容",                    IDM_UPDATE1
+            MENUITEM "v2.0更新内容",                    IDM_UPDATE2
+            MENUITEM "v3.0更新内容",                    IDM_UPDATE3
+            MENUITEM "v3.1更新内容（内测）",                IDM_UPDATE3d1
+            MENUITEM "v4.0更新内容",                    IDM_UPDATE4
+            MENUITEM "v4.1更新内容（内测）",                IDM_UPDATE4d1
+        END
+        MENUITEM "关于...(&A)\tCtrl+A",           IDM_ABOUT
+    END
+    MENUITEM "这是什么？(&W)",                   IDM_WHAT
+END
+
+MAINMENU1 MENU
+BEGIN
+    POPUP "Begin(&B)"
+    BEGIN
+        MENUITEM "Start(&S)\tCtrl+S",           IDM_START
+        MENUITEM "Restart(&R)\tCtrl+R",         IDM_RESTART, GRAYED
+        MENUITEM "Pause(&P)\tCtrl+P",           IDM_PAUSE, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Exit(&E)\tCtrl+E",            IDM_EXIT
+    END
+    POPUP "Help(&H)"
+    BEGIN
+        MENUITEM "Local Help(&L)\tCtrl+L",      IDM_LOCALHELP
+        MENUITEM "Internet Help(&O)\tCtrl+O",   IDM_ONLINEHELP
+    END
+    MENUITEM "Settings(&S)\t",              IDM_SETTINGS
+    POPUP "About(&G)"
+    BEGIN
+        POPUP "Update Info(&U)"
+        BEGIN
+            MENUITEM "v1.0",                        IDM_UPDATE1
+            MENUITEM "v2.0",                        IDM_UPDATE2
+            MENUITEM "v3.0",                        IDM_UPDATE3
+            MENUITEM "v3.1 (Internal test)",        IDM_UPDATE3d1
+            MENUITEM "v4.0",                        IDM_UPDATE4
+            MENUITEM "v4.1 (Internal test)",        IDM_UPDATE4d1
+        END
+        MENUITEM "About...(&A)\tCtrl+A",        IDM_ABOUT
+    END
+    MENUITEM "What is it?(&W)",             IDM_WHAT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+MAINMENU ACCELERATORS
+BEGIN
+    "^S",           IDM_START,              ASCII,  NOINVERT
+    "^R",           IDM_RESTART,            ASCII,  NOINVERT
+    "^P",           IDM_PAUSE,              ASCII,  NOINVERT
+    "^L",           IDM_LOCALHELP,          ASCII,  NOINVERT
+    "^O",           IDM_ONLINEHELP,         ASCII,  NOINVERT
+    "^A",           IDM_ABOUT,              ASCII,  NOINVERT
+    "^E",           IDM_EXIT,               ASCII,  NOINVERT
+    "^W",           IDM_WHAT,               ASCII,  NOINVERT
+END
+
+
+MAINICON                ICON                    "Mainicon.ico"
+
+SMALLICON               ICON                    "Smallicon.ico"
+
+
+CHOOSEDIFFICULTY DIALOGEX 0, 0, 140, 120
+STYLE DS_SETFONT | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "难度选择"
+FONT 12, "隶书", 0, 0, 0x1
+BEGIN
+    LTEXT           "初级（60秒）",IDC_PRIMARY,10,20,80,10
+    LTEXT           "中级（30秒）",IDC_MODEST,10,40,80,10
+    LTEXT           "高级（15秒）",IDC_SENIOR,10,60,80,10
+    LTEXT           "自定义（秒）",IDC_SELF,10,80,80,10
+    EDITTEXT        IDC_SELFEDIT,60,78,17,12,ES_NUMBER
+    PUSHBUTTON      "确定",IDB_PRIMARY,105,18,20,12
+    PUSHBUTTON      "确定",IDB_MODEST,105,38,20,12
+    PUSHBUTTON      "确定",IDB_SENIOR,105,58,20,12
+    PUSHBUTTON      "确定",IDB_SELF,105,78,20,12
+END
+
+CHOOSEDIFFICULTY1 DIALOGEX 0, 0, 130, 100
+STYLE DS_SETFONT | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Choose Difficulty"
+FONT 12, "Haettenschweiler", 0, 0, 0x1
+BEGIN
+    LTEXT           "Primary (60 seconds)",IDC_PRIMARY,10,20,80,10
+    LTEXT           "Modest  (30 seconds)",IDC_MODEST,10,40,80,10
+    LTEXT           "Senior  (15 seconds)",IDC_SENIOR,10,60,80,10
+    PUSHBUTTON   "This",IDB_PRIMARY,95,18,20,12
+    PUSHBUTTON   "This",IDB_MODEST,95,38,20,12
+    PUSHBUTTON   "This",IDB_SENIOR,95,58,20,12
+END
+
+CHOOSELANGUAGE DIALOGEX 0, 0, 125, 75
+STYLE DS_SETFONT | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "选择语言/Choose language"
+FONT 12, "隶书", 0, 0, 0x1
+BEGIN
+    LTEXT           "简体中文",LNG_CHINESE,10,20,80,10
+    LTEXT           "English",LNG_ENGLISH,10,40,80,10
+    PUSHBUTTON   "选择",IDB_CHINESE,85,18,20,12
+    PUSHBUTTON   "This",IDB_ENGLISH,85,38,20,12
+END
+
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 4,1,0,0
+ PRODUCTVERSION 4,1,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "CompanyName", "ClothNose Studio"
+            VALUE "FileDescription", "An interesting game by Timothy Liu"
+            VALUE "FileVersion", "4.1.0.0"
+            VALUE "InternalName", "五子棋.exe"
+            VALUE "LegalCopyright", "Copyright Timothy Liu"
+            VALUE "OriginalFilename", "五子棋.exe"
+            VALUE "ProductName", "刘氏五子棋"
+            VALUE "ProductVersion", "4.1.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
